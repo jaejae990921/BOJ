@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		String str;
+		int N = Integer.parseInt(br.readLine());
+		int[] arr = new int[26];
+		boolean flag = false;
+
+		for (int i = 0; i < N; i++) {
+			str = br.readLine();
+			arr[str.charAt(0) - 'a']++;
+		}
+
+		for (int j = 0; j < 26; j++) {
+			if (arr[j] >= 5) {
+				bw.write((char) (j + 'a'));
+				flag = true;
+			}
+		}
+
+		if (flag == false) {
+			bw.write("PREDAJA");
+		}
+
+		bw.flush();
+		bw.close();
+	}
+}
